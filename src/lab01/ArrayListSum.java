@@ -35,23 +35,23 @@ public class ArrayListSum {
 	private static int dac_listSum(ArrayList<Integer> list) {
 		if (list.isEmpty()) {return 0;}
 		else if // BASE CASE 
-			(// TODO){
-			return list.remove(0); // return the first element of the list
+			(list.size() == 1) {
+			return list.get(0); // return the first element of the list
 		}
 		else {
 			// DIVIDE:  split list into two:  list and list1
 			ArrayList<Integer> list1 = new ArrayList<>();
 			Integer next;
-			for(int i = 0;i<(list.size()/2);i++) {
+			for(int i = 0; i < (list.size()/2); i++) {
 				next = list.remove(0);
 				list1.add(next);
 			}
 			// CONQUER
-			int sum1 = dac_listSum(//TODO);
-			int sum2 = dac_listSum(//TODO);
+			int sum1 = dac_listSum(list1);
+			int sum2 = dac_listSum(list);
 			
 			// COMBINE
-			return //TODO
+			return sum1 + sum2;
 		}
 	}
 	

@@ -1,4 +1,4 @@
-package org.com2031.labs.dac.css1ss;
+package lab01;
 
 /**
  * Alternately add and subtract values in a list, using Divide and Conquer
@@ -43,7 +43,7 @@ public class PlusMinus {
 			int sum2 = dac_plusMinus(arr, m, j);
 			
 			// COMBINE
-			// TODO
+			return sum1 - sum2;
 		}
 	}
 	
