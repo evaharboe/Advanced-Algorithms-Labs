@@ -1,4 +1,4 @@
-package org.com2031.labs.dac.css1ss;
+package lab01;
 
 /**
  * Maximum value in an array, using Divide and Conquer

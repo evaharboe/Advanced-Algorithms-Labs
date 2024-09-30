@@ -34,21 +34,26 @@ public class Count {
 	
 	private static int recur_count(int[] arr, int k, int i, int j) {
 			// Returns number of occurrences of k in a between indexes i and j
-			if(i==j-1){
-				// TODO
+			if(i==j-1){ // BASE CASE
+				if (arr[i] == k) {
+				    return 1;
+				} else {
+				    return 0;
+				}
 			}
 			else if(i==j){return 0;}
 			else
 			{
 				// DIVIDE
-				// TODO
+				int m = (i + j)/2;
+				
 				
 				// CONQUER
-				int r1 = // TODO;
-				int r2 = // TODO;
+				int r1 = recur_count(arr, k, i, m);
+				int r2 = recur_count(arr, k, m, j);
 				
 				// COMBINE
-				//TODO;
+				return r1+r2;
 			}
 		}
 

@@ -1,4 +1,4 @@
-package org.com2031.labs.dac.css1ss;
+package lab01;
 
 /**
  * Maximum Sum Subarray of a 1-dimensional array
@@ -28,10 +28,12 @@ public class MaxSumSubarray {
 	        return Math.max(arr[l],0); 
 	    }
 	    // DIVIDE:  Find middle point 
-	    // TODO
+	    int m = (l + h) / 2;
+	    
 	    // CONQUER: solve for smaller problems ending at the midpoint
 	    int leftsum = dac_maxSumSubarray(arr, l, m);
-	    int rightsum = // TODO;	    
+	    int rightsum = dac_maxSumSubarray(arr, m, h);
+	    
 	    // COMBINE: also need to consider subsequences that crosses the midpoint
 	    int crossingsum = maxCrossingSum(arr, l, m, h);
 	    return Math.max(Math.max(leftsum, rightsum), crossingsum);
@@ -58,7 +60,14 @@ public class MaxSumSubarray {
 	        } 
 	  
 	        // Include elements on right of m, i.e. m and greater
-	        // TODO
+	        sum = 0; 
+	        int right_sum = arr[m]; 
+	        for (int i = m; i < h; i++) 
+	        { 
+	            sum = sum + arr[i]; 
+	            if (sum > right_sum) 
+	            right_sum = sum; 
+	        } 
 	  
 	        // Return sum of elements on left of m-1 and sum of elements on right of m 
 	        return left_sum + right_sum;

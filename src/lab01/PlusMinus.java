@@ -43,7 +43,11 @@ public class PlusMinus {
 			int sum2 = dac_plusMinus(arr, m, j);
 			
 			// COMBINE
-			return sum1 - sum2;
+			if ((m-i)%2 == 0) { //even number
+				return sum1 + sum2;
+			} else { // odd number
+				return sum1 - sum2;
+			}
 		}
 	}
 	

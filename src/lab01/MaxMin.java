@@ -1,4 +1,4 @@
-package org.com2031.labs.dac.css1ss;
+package lab01;
 
 /**
  * Find the maximum and minimum values in an array using Divide and Conquer
@@ -25,20 +25,26 @@ public class MaxMin {
 	
 	
 	public static int[] dac_maxMin(int[] arr, int start, int end) {
-		if (start == end-1) {
-			int[] mm = {arr[start],arr[start]};
-			return mm;
+		if (start == end-1) { // BASE CASE
+			int[] maxMin = {arr[start],arr[start]};
+			return maxMin;
 		}
-		else {
+		else { 
+			// DIVIDE
 			int mid = (start + end) / 2;
-			int[] mm = new int[2];
-			int[] mm1 = new int[2];
-			int[] mm2 = new int[2];
-			mm1 = // TODO;
-			mm2 = // TODO;
-			mm[0] = // TODO;
-			mm[1] = // TODO;
-			return mm;
+			int[] maxMin = new int[2];
+			int[] maxMin1 = new int[2];
+			int[] maxMin2 = new int[2];
+			
+			// CONQUER
+			maxMin1 = dac_maxMin(arr, start, mid);
+			maxMin2 = dac_maxMin(arr, mid, end);
+			
+			// COMBINE
+			maxMin[0] = Math.min(maxMin1[0], maxMin2[0]);
+			maxMin[1] = Math.max(maxMin1[1], maxMin2[1]);
+			
+			return maxMin;
 		}
 	}
 	
