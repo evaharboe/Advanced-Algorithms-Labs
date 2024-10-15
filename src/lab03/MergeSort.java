@@ -26,7 +26,11 @@ public class MergeSort {
 	public static int[] mergeSort(int[] arr) {
 		// CALL TO RECURSIVE DIVIDE AND CONQUER METHOD
 		// TODO
-		return dac_mergeSort(arr, arr[0], arr[arr.length-1]);  // replace this with the correct return value
+		if (arr.length == 0) {
+			return arr;}
+		else {
+			return dac_mergeSort(arr, 0, arr.length);
+		}
 	}
 	
 	/**
@@ -39,24 +43,15 @@ public class MergeSort {
 	
 	public static int[] dac_mergeSort(int[] arr, int start, int end) {
 		// BASE CASE
-		if (arr.length <= 1) {
-			return arr;
+		if (end-start <= 1) {
+			return new int[]{arr[start]};
 		}
 		else { // DIVIDE 
-			int mid = arr[0];
-			ArrayList<Integer> leftarr = new ArrayList<Integer>();
-			ArrayList<Integer> rightarr = new ArrayList<Integer>();
-			for (int i = 0; i < arr.length; i++) {
-				if (arr[i] < mid) {
-					leftarr.add(arr[i]);
-				} else {
-					rightarr.add(arr[i]);
-				}
-			}
-
+			int mid = (start+end)/2;
+			
 			// COMBINE
 			return merge(dac_mergeSort(arr, start, mid),dac_mergeSort(arr, mid, end));
-	}
+		}
 	}
 	
 	/**
@@ -69,6 +64,32 @@ public class MergeSort {
 	public static int[] merge(int[] arr1, int[] arr2) {
 		// COMBINE
 		// TODO
+		int length;
+		length = arr1.length + arr2.length;
+		int[] arr = new int[length];
+		int l = 0;
+		int r = 0;
+		
+		int i = 0, j = 0, k = 0;
+		while (l < arr1.length && r < arr2.length) {
+			if (arr1[l] < arr2[r]) {
+				arr[l+r] = arr1[l];
+				l = l+1;
+			}
+			else {
+				arr[l+r] = arr2[r];
+				r = r+1;
+			
+			}
+		}
+		while (l < arr1.length) {
+			arr[l+r] = arr1[l];
+			l = l+1;
+		}
+		while (r < arr2.length) {
+			arr[l+r] = arr2[r];
+			r = r+1;
+		}
 		return arr;
 		}
 	
