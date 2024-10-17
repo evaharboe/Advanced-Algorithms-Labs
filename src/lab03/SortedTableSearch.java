@@ -37,17 +37,26 @@ public class SortedTableSearch {
  */
 
 	private static int dac_TableSearch(int[][] table, int i, int j, int k, int l, int x) {
-		if // BASE CASE
-			// TODO
+		if (i==k || j==l) return 0;
 		else {
 			//DIVIDE
-			// TODO
-			//
-			//CONQUER
-			// TODO
-			//
-			//COMBINE
-			// TODO
+			int m1 = (i+k)/2;
+			int m2 = (j+l)/2;
+			if(x == table[m1][m2]) {return 1;}
+			if(x < table[m1][m2]) {
+				//CONQUER
+				int r1 = dac_TableSearch(table, i, j, m1, l, x);
+				int r2 = dac_TableSearch(table, m1, j, k, m2, x);
+				//COMBINE
+				return Math.max(r1, r2);
+			}
+			else {
+				//CONQUER
+				int r1 = dac_TableSearch(table, i, m2+1, k, l, x);
+				int r2 = dac_TableSearch(table, m1+1, j, k, m2+1, x);
+				//COMBINE
+				return Math.max(r1, r2);
+			}
 		}
 		
 	}
